@@ -1,0 +1,157 @@
+# API de Gerenciamento de Usuários
+
+Esta é uma API simples em Node.js para gerenciar uma lista de usuários localmente. Ela permite criar, recuperar, atualizar e deletar usuários sem a necessidade de um banco de dados.
+
+## Funcionalidades
+- **GET /users**: Retorna a lista de todos os usuários.
+- **GET /users/{id}**: Retorna os detalhes de um usuário específico.
+- **POST /users**: Cria um novo usuário. Valida que `name` e `email` são campos obrigatórios e que o `email` é único.
+- **PUT /users/{id}**: Atualiza os detalhes de um usuário existente.
+- **DELETE /users/{id}**: Remove um usuário pelo ID.
+
+## Requisitos
+- Node.js (v14 ou superior)
+- npm (v6 ou superior)
+
+## Instalação
+1. Clone o repositório:
+   ```bash
+   git clone <repository_url>
+   cd <repository_folder>
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+## Executando a API
+Inicie o servidor executando:
+```bash
+npm start
+```
+O servidor será iniciado em `http://localhost:3000`.
+
+## Testando a API
+Você pode usar ferramentas como [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/) para testar a API.
+
+### Endpoints
+
+#### 1. **Obter Todos os Usuários**
+   **GET** `/users`
+   - Retorna uma lista de todos os usuários.
+   - Exemplo de Resposta:
+     ```json
+     [
+       {
+         "id": 1,
+         "name": "John Doe",
+         "email": "johndoe@example.com",
+         "phone": "123456789",
+         "createdAt": "2024-12-18T10:00:00.000Z"
+       }
+     ]
+     ```
+
+#### 2. **Obter Usuário por ID**
+   **GET** `/users/{id}`
+   - Retorna os detalhes de um usuário específico.
+   - Exemplo de Resposta:
+     ```json
+     {
+       "id": 1,
+       "name": "John Doe",
+       "email": "johndoe@example.com",
+       "phone": "123456789",
+       "createdAt": "2024-12-18T10:00:00.000Z"
+     }
+     ```
+
+#### 3. **Criar um Usuário**
+   **POST** `/users`
+   - Corpo da Requisição:
+     ```json
+     {
+       "name": "John Doe",
+       "email": "johndoe@example.com",
+       "phone": "123456789"
+     }
+     ```
+   - Exemplo de Resposta:
+     ```json
+     {
+       "id": 1,
+       "name": "John Doe",
+       "email": "johndoe@example.com",
+       "phone": "123456789",
+       "createdAt": "2024-12-18T10:00:00.000Z"
+     }
+     ```
+   - **Erros de Validação:**
+     ```json
+     { "error": "Name and Email are required" }
+     ```
+     ```json
+     { "error": "Email already exists" }
+     ```
+
+#### 4. **Atualizar um Usuário**
+   **PUT** `/users/{id}`
+   - Corpo da Requisição:
+     ```json
+     {
+       "name": "John Smith",
+       "email": "johnsmith@example.com",
+       "phone": "987654321"
+     }
+     ```
+   - Exemplo de Resposta:
+     ```json
+     {
+       "id": 1,
+       "name": "John Smith",
+       "email": "johnsmith@example.com",
+       "phone": "987654321",
+       "createdAt": "2024-12-18T10:00:00.000Z"
+     }
+     ```
+   - **Erros de Validação:**
+     ```json
+     { "error": "User not found" }
+     ```
+     ```json
+     { "error": "Email already exists" }
+     ```
+
+#### 5. **Deletar um Usuário**
+   **DELETE** `/users/{id}`
+   - Exemplo de Resposta:
+     ```json
+     { "message": "User deleted successfully" }
+     ```
+   - **Erro:**
+     ```json
+     { "error": "User not found" }
+     ```
+
+## Estrutura de Pastas
+```
+project-folder/
+├── src/
+│   ├── controllers/
+│   │   └── userController.js
+│   ├── data/
+│   │   └── users.js
+│   ├── routes/
+│   │   └── userRoutes.js
+│   └── app.js
+├── package-lock.json
+├── package.json
+├── README.md
+```
+
+## Contribuindo
+Sinta-se à vontade para fazer um fork deste repositório e enviar pull requests com melhorias ou correções de bugs.
+
+## Licença
+Este projeto é open-source e está disponível sob a [Licença MIT](LICENSE).
+

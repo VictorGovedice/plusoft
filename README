@@ -1,0 +1,120 @@
+# Projeto CRUD de Usuários
+
+Este projeto é composto por um backend desenvolvido em **Node.js** e um frontend em **React.js**. O backend está configurado para rodar na porta **3001**, enquanto o frontend utiliza a porta **3000**. A aplicação permite criar, visualizar, editar e excluir usuários, além de possuir uma interface responsiva e amigável.
+
+---
+
+## Estrutura do Projeto
+
+### Backend (Node.js)
+
+#### Estrutura:
+- Arquitetura **Onion** ou **Clean Architecture**.
+
+#### Modelo de Dados:
+A entidade `User` possui os seguintes campos:
+- **Id** (int)
+- **Name** (string)
+- **Email** (string)
+- **Phone** (string)
+- **CreatedAt** (DateTime)
+
+#### Endpoints da API:
+- `GET /users` - Retorna a lista de todos os usuários.
+- `GET /users/{id}` - Retorna os detalhes de um usuário específico.
+- `POST /users` - Cria um novo usuário. Valida que:
+  - O nome e o e-mail não podem ser vazios.
+  - O e-mail deve ser único.
+- `PUT /users/{id}` - Atualiza as informações de um usuário.
+- `DELETE /users/{id}` - Remove um usuário pelo ID.
+
+#### Validação de Entrada de Dados:
+- As entradas são validadas e, em caso de dados inválidos, mensagens de erro apropriadas são retornadas.
+
+---
+
+### Frontend (React.js)
+
+#### Funcionalidades:
+- Interface responsiva e amigável.
+- Formulário para adicionar ou editar usuários com campos:
+  - Nome
+  - Email
+  - Telefone
+- Lista ou tabela para exibição dos usuários cadastrados, mostrando:
+  - Nome
+  - Email
+  - Telefone
+- Botões para editar e remover cada usuário.
+
+#### Integração com o Backend:
+- O frontend utiliza **Axios** para consumir a API do backend.
+- Erros da API são tratados e mensagens adequadas são exibidas na interface.
+
+---
+
+## Como Executar o Projeto
+
+### Pré-requisitos:
+Certifique-se de ter instalado em sua máquina:
+- **Node.js** (v14 ou superior)
+- **npm** ou **yarn**
+- Um navegador web moderno
+
+### Configuração do Ambiente de Desenvolvimento:
+
+#### Backend:
+1. Navegue até a pasta do backend:
+   ```bash
+   cd backend
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor:
+   ```bash
+   npm start
+   ```
+4. O servidor estará disponível em `http://localhost:3001`.
+
+#### Frontend:
+1. Navegue até a pasta do frontend:
+   ```bash
+   cd frontend
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor:
+   ```bash
+   npm start
+   ```
+4. A interface estará disponível em `http://localhost:3000`.
+
+---
+
+## Dependências Principais
+
+### Backend:
+- **Express**: Framework para criação de APIs.
+- **Mongoose**: ODM para MongoDB (se aplicável).
+- **Cors**: Middleware para habilitar CORS.
+
+### Frontend:
+- **React**: Biblioteca para construção da interface do usuário.
+- **Axios**: Para consumo da API.
+- **React Router**: Para navegação entre páginas (opcional).
+
+---
+
+## Funcionalidades Adicionais:
+- Interface totalmente responsiva, adaptada para dispositivos móveis.
+- Validação de formulário no frontend e backend.
+- Feedback visual para ações como salvar, editar ou deletar usuários.
+
+---
+
+Caso tenha dúvidas ou encontre problemas, fique à vontade para entrar em contato!
+
